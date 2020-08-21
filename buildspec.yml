@@ -1,6 +1,7 @@
 version: 0.2
 
 # Batch configuration
+#
 batch:
   fast-fail: false
   build-list:
