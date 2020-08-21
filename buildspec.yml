@@ -29,4 +29,4 @@ phases:
   build:
     commands:
         - "npm start & npx wait-on http://127.0.0.1:8080"
-        - npx cypress run --record --parallel --ci-build-id $CODEBUILD_BATCH_BUILD_IDENTIFIER
+        - npx cypress run --record --parallel --ci-build-id $CODEBUILD_SOURCE_VERSION
