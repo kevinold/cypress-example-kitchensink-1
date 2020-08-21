@@ -3,15 +3,15 @@ version: 0.2
 batch:
   fast-fail: false
   build-list:
-    - identifier: cypress
+    - identifier: cypress1
       env:
         variables:
           IMAGE: cypress/base
-    - identifier: cypress
+    - identifier: cypress2
       env:
         variables:
           IMAGE: cypress/base
-    - identifier: cypress
+    - identifier: cypress3
       env:
         variables:
           IMAGE: cypress/base
