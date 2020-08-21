@@ -22,12 +22,11 @@ phases:
       nodejs: 10
     commands:
       - npm install
+      - npm install wait-on
   pre_build:
     commands:
       - npm run build
   build:
     commands:
-        - npm install
-        - npm install wait-on
         - "npm start & npx wait-on http://127.0.0.1:8080"
-        - npx cypress run --record --parallel
+        - npx cypress run --record --parallel --ci-build-id $CODEBUILD_BUILD_ID
