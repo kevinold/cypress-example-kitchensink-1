@@ -1,0 +1,33 @@
+version: 0.2
+
+batch:
+  fast-fail: false
+  build-list:
+    - identifier: cypress
+      env:
+        variables:
+          IMAGE: cypress/base
+    - identifier: cypress
+      env:
+        variables:
+          IMAGE: cypress/base
+    - identifier: cypress
+      env:
+        variables:
+          IMAGE: cypress/base
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10
+    commands:
+      - npm install
+  pre_build:
+    commands:
+      - npm run build
+  build:
+    commands:
+        - npm install
+        - npm install wait-on
+        - "npm start & npx wait-on http://127.0.0.1:8080"
+        - npx cypress run
