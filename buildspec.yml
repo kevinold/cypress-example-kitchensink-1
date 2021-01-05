@@ -13,7 +13,7 @@ batch:
     dynamic:
       env:
         image:
-          - cypress/base
+          - cypress/browsers:node12.14.1-chrome85-ff81
         variables:
           CYPRESS_SPEC:
             - cypress/integration/actions.spec.js
