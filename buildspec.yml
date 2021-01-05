@@ -33,7 +33,10 @@ phases:
       - npm run cy:info
       - echo $CYPRESS_SPEC
       - echo $CODEBUILD_SRC_DIR
+      - echo ${CODEBUILD_SRC_DIR}/$CYPRESS_SPEC
+      - export CY_SPEC="$($CODEBUILD_SRC_DIR/$CYPRESS_SPEC)
+      - echo $CY_SPEC
   build:
     commands:
         - npm run start:ci &
-        - npx cypress run --record --parallel --ci-build-id $CODEBUILD_INITIATOR --spec ${CODEBUILD_SRC_DIR}/$CYPRESS_SPEC
+        - npx cypress run --record --parallel --ci-build-id $CODEBUILD_INITIATOR --spec $CY_SPEC
