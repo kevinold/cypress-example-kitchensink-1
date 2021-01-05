@@ -35,7 +35,7 @@ phases:
       - echo $CODEBUILD_SRC_DIR
       - echo ${CODEBUILD_SRC_DIR}/$CYPRESS_SPEC
       - cat ${CODEBUILD_SRC_DIR}/$CYPRESS_SPEC
-      - export CY_SPEC=$($CODEBUILD_SRC_DIR/$CYPRESS_SPEC)
+      - export CY_SPEC=$CODEBUILD_SRC_DIR/$CYPRESS_SPEC
       - echo $CY_SPEC
   build:
     commands:
