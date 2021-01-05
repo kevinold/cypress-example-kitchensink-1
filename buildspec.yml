@@ -17,10 +17,10 @@ batch:
         variables:
           CYPRESS_SPEC:
             - cypress/integration/actions.spec.js
-            - cypress/integration/aliasing.spec.js
-            - cypress/integration/assertions.spec.js
-            - cypress/integration/connectors.spec.js
-            - cypress/integration/cookies.spec.js
+            #- cypress/integration/aliasing.spec.js
+            #- cypress/integration/assertions.spec.js
+            #- cypress/integration/connectors.spec.js
+            #- cypress/integration/cookies.spec.js
 phases:
   install:
     runtime-versions:
@@ -32,6 +32,7 @@ phases:
       - npm run cy:verify
       - npm run cy:info
       - echo $CYPRESS_SPEC
+      - echo $CODEBUILD_SRC_DIR
   build:
     commands:
         - npm run start:ci &
