@@ -1,0 +1,42 @@
+version: 0.2
+
+# Batch configuration
+#
+batch:
+  fast-fail: false
+  build-list:
+    - identifier: cypress1
+      env:
+        variables:
+          IMAGE: cypress/base
+    - identifier: cypress2
+      env:
+        variables:
+          IMAGE: cypress/base
+    - identifier: cypress3
+      env:
+        variables:
+          IMAGE: cypress/base
+    - identifier: cypress4
+      env:
+        variables:
+          IMAGE: cypress/base
+    - identifier: cypress5
+      env:
+        variables:
+          IMAGE: cypress/base
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10
+    commands:
+      - npm ci
+  pre_build:
+    commands:
+      - npm run cy:verify
+      - npm run cy:info
+  build:
+    commands:
+        - npm run start:ci &
+        - npx cypress run --record --parallel --ci-build-id $CODEBUILD_INITIATOR
