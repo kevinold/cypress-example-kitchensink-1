@@ -35,4 +35,4 @@ phases:
   build:
     commands:
         - npm run start:ci &
-        - npx cypress run --record --parallel --ci-build-id $CODEBUILD_INITIATOR --spec '$CYPRESS_SPEC'
+        - npx cypress run --record --parallel --ci-build-id $CODEBUILD_INITIATOR --spec $CYPRESS_SPEC
