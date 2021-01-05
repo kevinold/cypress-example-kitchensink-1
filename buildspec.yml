@@ -4,28 +4,24 @@ version: 0.2
 #
 batch:
   fast-fail: false
-  build-list:
-    - identifier: cypress1
+  build-matrix:
+    static:
+      ignore-failure: false
       env:
-        variables:
-          IMAGE: cypress/base
-    - identifier: cypress2
+        type: LINUX_CONTAINER
+        privileged-mode: true
+    dynamic:
       env:
+        image:
+          - cypress/base
         variables:
-          IMAGE: cypress/base
-    - identifier: cypress3
-      env:
-        variables:
-          IMAGE: cypress/base
-    - identifier: cypress4
-      env:
-        variables:
-          IMAGE: cypress/base
-    - identifier: cypress5
-      env:
-        variables:
-          IMAGE: cypress/base
-
+          CYPRESS_SPEC:
+            - cypress/integration/actions.spec.js
+            - cypress/integration/aliasing.spec.js
+            - cypress/integration/assertions.spec.js
+            - cypress/integration/connectors.spec.js
+            - cypress/integration/cookies.spec.js
+            - cypress/integration/cypress_api.spec.js
 phases:
   install:
     runtime-versions:
@@ -36,7 +32,8 @@ phases:
     commands:
       - npm run cy:verify
       - npm run cy:info
+      - echo $CYPRESS_SPEC
   build:
     commands:
         - npm run start:ci &
-        - npx cypress run --record --parallel --ci-build-id $CODEBUILD_INITIATOR
+        - npx cypress run --record --parallel --ci-build-id $CODEBUILD_INITIATOR --spec '$CYPRESS_SPEC'
