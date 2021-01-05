@@ -16,11 +16,11 @@ batch:
           - public.ecr.aws/q6t8o9m1/cypress-included-6-1-0
         variables:
           CYPRESS_SPEC:
-            - cypress/integration/actions.spec.js
-            #- cypress/integration/aliasing.spec.js
-            #- cypress/integration/assertions.spec.js
-            #- cypress/integration/connectors.spec.js
-            #- cypress/integration/cookies.spec.js
+            - cypress/integration/examples/actions.spec.js
+            #- cypress/integration/examples/aliasing.spec.js
+            #- cypress/integration/examples/assertions.spec.js
+            #- cypress/integration/examples/connectors.spec.js
+            #- cypress/integration/examples/cookies.spec.js
 phases:
   install:
     runtime-versions:
@@ -40,4 +40,4 @@ phases:
   build:
     commands:
         - npm run start:ci &
-        - npx cypress run --record --parallel --ci-build-id $CODEBUILD_INITIATOR --spec $CY_SPEC
+        - npx cypress run --record --parallel --ci-build-id $CODEBUILD_INITIATOR --spec $CODEBUILD_SRC_DIR/$CYPRESS_SPEC
