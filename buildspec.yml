@@ -13,7 +13,7 @@ batch:
     dynamic:
       env:
         image:
-          - 316137363844.dkr.ecr.us-east-1.amazonaws.com/cypress-included-6-1-0
+          - public.ecr.aws/q6t8o9m1/cypress-included-6-1-0
           #- cypress/browsers:node12.14.1-chrome85-ff81
         variables:
           CYPRESS_SPEC:
