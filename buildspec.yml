@@ -21,7 +21,6 @@ batch:
             - cypress/integration/assertions.spec.js
             - cypress/integration/connectors.spec.js
             - cypress/integration/cookies.spec.js
-            - cypress/integration/cypress_api.spec.js
 phases:
   install:
     runtime-versions:
