@@ -34,5 +34,5 @@ phases:
   build:
     commands:
         - npm run start:ci &
-        - npx cypress run --spec $CODEBUILD_SRC_DIR/$CYPRESS_SPEC
+        - npx cypress run --browser chrome --spec $CODEBUILD_SRC_DIR/$CYPRESS_SPEC
         #- npx cypress run --record --parallel --ci-build-id $CODEBUILD_INITIATOR --spec $CODEBUILD_SRC_DIR/$CYPRESS_SPEC
