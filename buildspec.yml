@@ -1,9 +1,5 @@
 version: 0.2
 
-env:
-  variables:
-    TEST_FILES: $(find $CODEBUILD_SRC_DIR/cypress/integration/examples)
-
 # Batch configuration
 #
 batch:
@@ -18,7 +14,6 @@ batch:
       env:
         image:
           - public.ecr.aws/q6t8o9m1/cypress-browsers-node14.7.0-chrome84
-          #- public.ecr.aws/q6t8o9m1/cypress-included-6-1-0
         variables:
           CYPRESS_SPEC:
             - cypress/integration/examples/actions.spec.js
@@ -26,7 +21,10 @@ batch:
             - cypress/integration/examples/assertions.spec.js
             - cypress/integration/examples/connectors.spec.js
             - cypress/integration/examples/cookies.spec.js
-          TEST_FILES: $TEST_FILES
+          CYPRESS_SPEC_IX1:
+            - cypress/integration/examples/cypress_api.spec.js
+            - cypress/integration/examples/files.spec.js
+            - cypress/integration/examples/local_storage.spec.js
 phases:
   install:
     runtime-versions:
@@ -37,7 +35,6 @@ phases:
     commands:
       - npm run cy:verify
       - npm run cy:info
-      - echo $TEST_FILES
   build:
     commands:
         - npm run start:ci &
