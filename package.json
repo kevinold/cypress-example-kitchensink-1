@@ -46,7 +46,8 @@
     "local:run": "start-test 8080 cy:run",
     "local:run:record": "start-test 8080 cy:run:record",
     "ci:set-port": "node ./scripts/set-port",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "update-buildspec": "node ./scripts/update-buildspec"
   },
   "repository": {
     "type": "git",
@@ -86,7 +87,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint && npm run lint:yaml",
+      "pre-commit": "npm run lint && npm run lint:yaml && npm run update-buildspec",
       "pre-push": "npm run lint && npm run lint:yaml"
     }
   }
