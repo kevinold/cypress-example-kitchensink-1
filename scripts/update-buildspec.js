@@ -16,7 +16,7 @@ const getSpecFilenames = () => {
 const updateBuildSpec = (filenames) => {
   const buildSpec = YAML.parse(buildSpecYml)
 
-  buildSpec['batch']['build-matrix']['dynamic']['env']['variables']['CYPRESS_SPEC'] = filenames
+  buildSpec['batch']['build-matrix']['dynamic']['env']['variables']['CYPRESS_SPEC'] = filenames.sort()
 
   const replaced = YAML.stringify(buildSpec)
 
