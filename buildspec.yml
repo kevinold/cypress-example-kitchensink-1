@@ -13,7 +13,8 @@ batch:
     dynamic:
       env:
         image:
-          - public.ecr.aws/q6t8o9m1/cypress-included-6-1-0
+          - public.ecr.aws/q6t8o9m1/cypress-browsers-node14.7.0-chrome84
+          #- public.ecr.aws/q6t8o9m1/cypress-included-6-1-0
         variables:
           CYPRESS_SPEC:
             - cypress/integration/examples/actions.spec.js
