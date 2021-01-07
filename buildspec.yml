@@ -1,5 +1,9 @@
 version: 0.2
 
+env:
+  variables:
+    test_files: $(find $CODEBUILD_SRC_DIR/cypress/integration/examples)
+
 # Batch configuration
 #
 batch:
