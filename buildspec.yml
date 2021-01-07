@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    test_files: $(find $CODEBUILD_SRC_DIR/cypress/integration/examples)
+    TEST_FILES: $(find $CODEBUILD_SRC_DIR/cypress/integration/examples)
 
 # Batch configuration
 #
@@ -26,6 +26,7 @@ batch:
             - cypress/integration/examples/assertions.spec.js
             - cypress/integration/examples/connectors.spec.js
             - cypress/integration/examples/cookies.spec.js
+          TEST_FILES: $TEST_FILES
 phases:
   install:
     runtime-versions:
@@ -36,6 +37,7 @@ phases:
     commands:
       - npm run cy:verify
       - npm run cy:info
+      - echo $TEST_FILES
   build:
     commands:
         - npm run start:ci &
