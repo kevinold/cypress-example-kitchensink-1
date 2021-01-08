@@ -31,4 +31,4 @@ phases:
   build:
     commands:
       - npm run start:ci &
-      - npx cypress run --record --parallel --browser chrome
+      - npx cypress run --record --parallel --browser chrome --ci-build-id $CODEBUILD_INITIATOR
