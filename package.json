@@ -87,7 +87,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint && npm run lint:yaml && npm run update-buildspec",
+      "pre-commit": "npm run lint && npm run lint:yaml",
       "pre-push": "npm run lint && npm run lint:yaml"
     }
   }
