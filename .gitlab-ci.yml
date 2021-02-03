@@ -63,3 +63,20 @@ electrons-4:
   extends: .job_template
 electrons-5:
   extends: .job_template
+firefox:
+  image: cypress/browsers:node12.14.1-chrome85-ff81
+  stage: test
+  script:
+    # print CI environment variables for reference
+    - $(npm bin)/print-env CI
+    # start the server in the background
+    - npm run start:ci &
+    # run Cypress test in load balancing mode
+    - npm run e2e:record -- --parallel --browser firefox --group "Firefox on GitLab CI"
+  artifacts:
+    when: always
+    paths:
+      - cypress/videos/**/*.mp4
+      - cypress/screenshots/**/*.png
+    expire_in: 1 day
+
